@@ -1,0 +1,510 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Login & Register</title>
+
+<style>
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: #121212;
+    color: white;
+}
+
+/* ================= CONTAINER ================= */
+
+.container {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* ================= BOX ================= */
+
+.box {
+    width: 370px;
+    background: #1e1e1e;
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 0 25px rgba(0,0,0,0.5);
+}
+
+.box h1 {
+    text-align: center;
+    margin-bottom: 25px;
+}
+
+label {
+    display: block;
+    margin-top: 12px;
+    margin-bottom: 7px;
+}
+
+input {
+    width: 100%;
+    padding: 12px;
+    border: none;
+    border-radius: 8px;
+    background: #333;
+    color: white;
+    outline: none;
+}
+
+button {
+    width: 100%;
+    padding: 12px;
+    margin-top: 20px;
+    border: none;
+    border-radius: 8px;
+    background: #1db954;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+button:hover {
+    background: #1ed760;
+}
+
+.switch {
+    text-align: center;
+    margin-top: 20px;
+    color: #aaa;
+}
+
+.switch span {
+    color: #1db954;
+    cursor: pointer;
+}
+
+.message {
+    text-align: center;
+    margin-top: 15px;
+    color: #ff5555;
+}
+
+/* ================= WEBSITE ================= */
+
+#website {
+    display: none;
+}
+
+.navbar {
+    height: 65px;
+    background: #1e1e1e;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 25px;
+    border-bottom: 1px solid #333;
+}
+
+.logo {
+    font-size: 22px;
+    font-weight: bold;
+    color: #1db954;
+}
+
+.user {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.logout {
+    width: auto;
+    margin: 0;
+    padding: 9px 15px;
+    background: #e53935;
+}
+
+.logout:hover {
+    background: #ff4444;
+}
+
+.content {
+    padding: 40px;
+}
+
+.card {
+    background: #1e1e1e;
+    padding: 25px;
+    border-radius: 15px;
+}
+
+/* ================= POPUP ================= */
+
+#popup {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.7);
+    justify-content: center;
+    align-items: center;
+}
+
+.popup-box {
+    width: 350px;
+    background: #222;
+    padding: 30px;
+    border-radius: 15px;
+    text-align: center;
+}
+
+.popup-buttons {
+    display: flex;
+    gap: 10px;
+}
+
+.popup-buttons button {
+    flex: 1;
+}
+
+.yes {
+    background: #e53935;
+}
+
+.no {
+    background: #555;
+}
+</style>
+</head>
+
+<body>
+
+
+<!-- ================= LOGIN ================= -->
+
+<div class="container" id="loginPage">
+
+    <div class="box">
+
+        <h1>🔐 Login</h1>
+
+        <label>Username</label>
+        <input type="text" id="loginUsername"
+               placeholder="Masukkan username">
+
+        <label>Password</label>
+        <input type="password" id="loginPassword"
+               placeholder="Masukkan password">
+
+        <button onclick="login()">
+            Login
+        </button>
+
+        <div class="message" id="loginMessage"></div>
+
+        <div class="switch">
+            Belum punya akun?
+            <span onclick="showRegister()">Daftar</span>
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- ================= REGISTER ================= -->
+
+<div class="container" id="registerPage" style="display:none;">
+
+    <div class="box">
+
+        <h1>📝 Daftar Akun</h1>
+
+        <label>Nama</label>
+        <input type="text" id="registerName"
+               placeholder="Masukkan nama">
+
+        <label>Username</label>
+        <input type="text" id="registerUsername"
+               placeholder="Buat username">
+
+        <label>Password</label>
+        <input type="password" id="registerPassword"
+               placeholder="Buat password">
+
+        <button onclick="register()">
+            Daftar
+        </button>
+
+        <div class="message" id="registerMessage"></div>
+
+        <div class="switch">
+            Sudah punya akun?
+            <span onclick="showLogin()">Login</span>
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- ================= WEBSITE ================= -->
+
+<div id="website">
+
+    <div class="navbar">
+
+        <div class="logo">
+            🎵 MelodyX
+        </div>
+
+        <div class="user">
+
+            <span>
+                👤 <span id="userName"></span>
+            </span>
+
+            <button class="logout"
+                    onclick="showLogout()">
+                Logout
+            </button>
+
+        </div>
+
+    </div>
+
+
+    <div class="content">
+
+        <h1>Selamat Datang 👋</h1>
+
+        <div class="card">
+
+            <h2>Berhasil Login!</h2>
+
+            <p>
+                Halo <b id="welcomeName"></b>!
+            </p>
+
+            <p>
+                Kamu sekarang sudah masuk ke website.
+            </p>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- ================= POPUP LOGOUT ================= -->
+
+<div id="popup">
+
+    <div class="popup-box">
+
+        <h2>🚪 Logout</h2>
+
+        <p>
+            Apakah kamu yakin ingin keluar?
+        </p>
+
+        <div class="popup-buttons">
+
+            <button class="yes"
+                    onclick="logout()">
+                Yes
+            </button>
+
+            <button class="no"
+                    onclick="closePopup()">
+                No
+            </button>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<script>
+
+/* ================= REGISTER ================= */
+
+function register() {
+
+    let name =
+        document.getElementById("registerName").value.trim();
+
+    let username =
+        document.getElementById("registerUsername").value.trim();
+
+    let password =
+        document.getElementById("registerPassword").value;
+
+    let message =
+        document.getElementById("registerMessage");
+
+
+    if (name === "" || username === "" || password === "") {
+
+        message.textContent =
+            "Semua data harus diisi!";
+
+        return;
+    }
+
+
+    let users =
+        JSON.parse(localStorage.getItem("users")) || [];
+
+
+    // Cek username sudah digunakan atau belum
+
+    let existingUser =
+        users.find(user => user.username === username);
+
+
+    if (existingUser) {
+
+        message.textContent =
+            "Username sudah digunakan!";
+
+        return;
+    }
+
+
+    // Simpan akun baru
+
+    users.push({
+        name: name,
+        username: username,
+        password: password
+    });
+
+
+    localStorage.setItem(
+        "users",
+        JSON.stringify(users)
+    );
+
+
+    alert("Pendaftaran berhasil! Silakan login.");
+
+    document.getElementById("registerName").value = "";
+    document.getElementById("registerUsername").value = "";
+    document.getElementById("registerPassword").value = "";
+
+    showLogin();
+}
+
+
+/* ================= LOGIN ================= */
+
+function login() {
+
+    let username =
+        document.getElementById("loginUsername").value.trim();
+
+    let password =
+        document.getElementById("loginPassword").value;
+
+
+    let users =
+        JSON.parse(localStorage.getItem("users")) || [];
+
+
+    let user =
+        users.find(
+            user =>
+            user.username === username &&
+            user.password === password
+        );
+
+
+    if (user) {
+
+        document.getElementById("loginPage").style.display = "none";
+
+        document.getElementById("website").style.display = "block";
+
+        document.getElementById("userName").textContent =
+            user.name;
+
+        document.getElementById("welcomeName").textContent =
+            user.name;
+
+        document.getElementById("loginMessage").textContent = "";
+
+    } else {
+
+        document.getElementById("loginMessage").textContent =
+            "Username atau password salah!";
+
+    }
+}
+
+
+/* ================= PINDAH KE REGISTER ================= */
+
+function showRegister() {
+
+    document.getElementById("loginPage").style.display = "none";
+
+    document.getElementById("registerPage").style.display = "flex";
+
+}
+
+
+/* ================= PINDAH KE LOGIN ================= */
+
+function showLogin() {
+
+    document.getElementById("registerPage").style.display = "none";
+
+    document.getElementById("loginPage").style.display = "flex";
+
+    document.getElementById("registerMessage").textContent = "";
+
+}
+
+
+/* ================= LOGOUT POPUP ================= */
+
+function showLogout() {
+
+    document.getElementById("popup").style.display = "flex";
+
+}
+
+
+/* ================= BATAL LOGOUT ================= */
+
+function closePopup() {
+
+    document.getElementById("popup").style.display = "none";
+
+}
+
+
+/* ================= LOGOUT ================= */
+
+function logout() {
+
+    document.getElementById("popup").style.display = "none";
+
+    document.getElementById("website").style.display = "none";
+
+    document.getElementById("loginPage").style.display = "flex";
+
+    document.getElementById("loginUsername").value = "";
+
+    document.getElementById("loginPassword").value = "";
+
+}
+
+</script>
+
+</body>
+</html>

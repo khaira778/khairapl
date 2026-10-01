@@ -1,0 +1,266 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: #121212;
+    color: white;
+}
+
+
+/* ================= CONTAINER ================= */
+
+.container {
+    min-height: 100vh;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+/* ================= LOGIN & REGISTER ================= */
+
+.box {
+    width: 370px;
+
+    background: #1e1e1e;
+
+    padding: 30px;
+
+    border-radius: 15px;
+
+    box-shadow: 0 0 25px rgba(0,0,0,0.5);
+}
+
+.box h1 {
+    text-align: center;
+
+    margin-bottom: 25px;
+}
+
+label {
+    display: block;
+
+    margin-top: 12px;
+
+    margin-bottom: 7px;
+}
+
+input {
+    width: 100%;
+
+    padding: 12px;
+
+    border: none;
+
+    border-radius: 8px;
+
+    background: #333;
+
+    color: white;
+
+    outline: none;
+}
+
+input:focus {
+    outline: 2px solid #1db954;
+}
+
+
+/* ================= BUTTON ================= */
+
+button {
+    width: 100%;
+
+    padding: 12px;
+
+    margin-top: 20px;
+
+    border: none;
+
+    border-radius: 8px;
+
+    background: #1db954;
+
+    color: white;
+
+    font-size: 16px;
+
+    cursor: pointer;
+}
+
+button:hover {
+    background: #1ed760;
+}
+
+
+/* ================= PESAN ================= */
+
+.message {
+    text-align: center;
+
+    margin-top: 15px;
+
+    color: #ff5555;
+}
+
+
+/* ================= PINDAH LOGIN / REGISTER ================= */
+
+.switch {
+    text-align: center;
+
+    margin-top: 20px;
+
+    color: #aaa;
+}
+
+.switch span {
+    color: #1db954;
+
+    cursor: pointer;
+
+    font-weight: bold;
+}
+
+
+/* ================= WEBSITE ================= */
+
+#website {
+    display: none;
+}
+
+.navbar {
+    height: 65px;
+
+    background: #1e1e1e;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    padding: 0 25px;
+
+    border-bottom: 1px solid #333;
+}
+
+.logo {
+    font-size: 22px;
+
+    font-weight: bold;
+
+    color: #1db954;
+}
+
+.user {
+    display: flex;
+
+    align-items: center;
+
+    gap: 15px;
+}
+
+
+/* ================= LOGOUT BUTTON ================= */
+
+.logout {
+    width: auto;
+
+    margin: 0;
+
+    padding: 9px 15px;
+
+    background: #e53935;
+}
+
+.logout:hover {
+    background: #ff4444;
+}
+
+
+/* ================= CONTENT ================= */
+
+.content {
+    padding: 40px;
+}
+
+.content h1 {
+    font-size: 35px;
+}
+
+.card {
+    background: #1e1e1e;
+
+    padding: 25px;
+
+    border-radius: 15px;
+
+    margin-top: 20px;
+}
+
+
+/* ================= POPUP ================= */
+
+#popup {
+    display: none;
+
+    position: fixed;
+
+    inset: 0;
+
+    background: rgba(0,0,0,0.7);
+
+    justify-content: center;
+
+    align-items: center;
+}
+
+.popup-box {
+    width: 350px;
+
+    background: #222;
+
+    padding: 30px;
+
+    border-radius: 15px;
+
+    text-align: center;
+}
+
+.popup-box h2 {
+    margin-top: 0;
+}
+
+.popup-buttons {
+    display: flex;
+
+    gap: 10px;
+}
+
+.popup-buttons button {
+    flex: 1;
+}
+
+
+/* ================= YES / NO ================= */
+
+.yes {
+    background: #e53935;
+}
+
+.yes:hover {
+    background: #ff4444;
+}
+
+.no {
+    background: #555;
+}
+
+.no:hover {
+    background: #666;
+}
